@@ -8,7 +8,7 @@ This audit compares the v1 public prototype with the v2 wording. “Current” m
 - Replacement wording: “Read experiences”, “Start a private draft”, and “Share an experience” linking directly to the browser-only draft area.
 - Why it changed: The actions now begin with plain verbs. The draft area immediately states that nothing is sent, published or uploaded.
 - Service state: Current prototype.
-- Claim needing owner approval: The “Sign in” label remains a placeholder until accounts are designed and approved.
+- Claim needing owner approval: “Sign in” was removed because accounts do not exist. It should return only after the account flow is designed and approved.
 
 ## Hero
 
@@ -88,7 +88,7 @@ This audit compares the v1 public prototype with the v2 wording. “Current” m
 - Replacement wording: A shorter product-status notice and the approved sentence: “Support is optional. It never affects access, publication, moderation or how anyone is treated.”
 - Why it changed: The notice accurately says accounts, submissions and comments are closed. It also states that analytics and tracking are absent.
 - Service state: Current prototype.
-- Claim needing owner approval: Separate Privacy and Terms documents are placeholders and need approval before launch.
+- Claim needing owner approval: Privacy, Terms and Safety & Privacy now open real prototype documents. Their text still needs owner and legal review before real users launch.
 
 ## Human-tone and claim review
 
