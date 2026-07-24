@@ -1,0 +1,309 @@
+openapi: 3.1.0
+info:
+  title: Project Supernatural Control Center
+  version: 0.1.0-staging
+  description: |
+    Strictly allowlisted staging management actions for the Project Supernatural owner.
+    This API never provides arbitrary database queries, shell commands, secrets, email
+    exports, payment data, permanent deletion, or unrestricted GitHub access.
+servers:
+  - url: https://YOUR-STAGING-CONTROL-DOMAIN.example
+    description: Replace with the private staging gateway URL
+security:
+  - bearerAuth: []
+tags:
+  - name: Overview
+  - name: Safety
+  - name: Moderation
+  - name: Operations
+  - name: Approvals
+paths:
+  /v1/overview:
+    get:
+      tags: [Overview]
+      operationId: getOperationalOverview
+      summary: Show the complete operational overview
+      description: Returns incidents, protective actions, recommended next action, health, backups and approval counts.
+      responses:
+        "200": {description: Current overview, content: {application/json: {schema: {$ref: "#/components/schemas/Overview"}}}}
+  /v1/health:
+    get:
+      tags: [Overview]
+      operationId: getSiteHealth
+      summary: Check public and staging health
+      responses:
+        "200": {description: Health status, content: {application/json: {schema: {type: object, additionalProperties: true}}}}
+  /v1/incidents:
+    get:
+      tags: [Safety]
+      operationId: listIncidentsAndReports
+      summary: List incidents and ungrouped reports
+      responses:
+        "200": {description: Incidents and reports, content: {application/json: {schema: {type: object, additionalProperties: true}}}}
+  /v1/incidents/group:
+    post:
+      tags: [Safety]
+      operationId: groupReportsIntoIncident
+      summary: Group related reports into an incident
+      description: Reversible low-risk organization action. Include explanation, recorded protection and a recommended next action.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+              required: [reportIds, title, explanation]
+              properties:
+                reportIds: {type: array, minItems: 1, maxItems: 50, items: {type: string}}
+                title: {type: string, minLength: 3, maxLength: 120}
+                explanation: {type: string, minLength: 5, maxLength: 1000}
+                severity: {type: string, enum: [low, medium, high, critical]}
+                protectiveAction: {type: string, maxLength: 500}
+                recommendation: {type: string, maxLength: 500}
+      responses:
+        "201": {description: Incident created, content: {application/json: {schema: {$ref: "#/components/schemas/Incident"}}}}
+  /v1/incidents/report:
+    post:
+      tags: [Safety]
+      operationId: createIncidentReport
+      summary: Record a new incident report
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+              required: [kind, targetId, summary]
+              properties:
+                kind: {type: string, enum: [privacy, safety, conduct, availability, security]}
+                targetId: {type: string, maxLength: 100}
+                summary: {type: string, maxLength: 500}
+                severity: {type: string, enum: [low, medium, high, critical]}
+      responses:
+        "201": {description: Report recorded, content: {application/json: {schema: {type: object, additionalProperties: true}}}}
+  /v1/content:
+    get:
+      tags: [Moderation]
+      operationId: listManageableContent
+      summary: List staging content and moderation state
+      responses:
+        "200": {description: Allowlisted content metadata, content: {application/json: {schema: {type: object, additionalProperties: true}}}}
+  /v1/content/{contentId}/hide:
+    post:
+      tags: [Moderation]
+      operationId: hideContentTemporarily
+      summary: Temporarily hide content
+      description: Reversible protective action. Never deletes content.
+      parameters:
+        - $ref: "#/components/parameters/ContentId"
+      requestBody: {$ref: "#/components/requestBodies/Reason"}
+      responses:
+        "200": {description: Content hidden, content: {application/json: {schema: {type: object, additionalProperties: true}}}}
+  /v1/content/{contentId}/restore:
+    post:
+      tags: [Moderation]
+      operationId: restoreHiddenContent
+      summary: Restore temporarily hidden content
+      parameters:
+        - $ref: "#/components/parameters/ContentId"
+      requestBody: {$ref: "#/components/requestBodies/Reason"}
+      responses:
+        "200": {description: Content restored, content: {application/json: {schema: {type: object, additionalProperties: true}}}}
+  /v1/comments/{commentId}/hide:
+    post:
+      tags: [Moderation]
+      operationId: hideCommentTemporarily
+      summary: Temporarily hide a reported comment
+      parameters:
+        - name: commentId
+          in: path
+          required: true
+          schema: {type: string}
+      requestBody: {$ref: "#/components/requestBodies/Reason"}
+      responses:
+        "200": {description: Comment hidden, content: {application/json: {schema: {type: object, additionalProperties: true}}}}
+  /v1/users/{userId}/warn:
+    post:
+      tags: [Moderation]
+      operationId: warnUser
+      summary: Record a user warning
+      parameters: [{$ref: "#/components/parameters/UserId"}]
+      requestBody: {$ref: "#/components/requestBodies/Reason"}
+      responses:
+        "200": {description: Warning recorded, content: {application/json: {schema: {type: object, additionalProperties: true}}}}
+  /v1/users/{userId}/restrict-temporary:
+    post:
+      tags: [Moderation]
+      operationId: restrictUserTemporarily
+      summary: Apply a temporary restriction of no more than 30 days
+      parameters: [{$ref: "#/components/parameters/UserId"}]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+              required: [reason, days]
+              properties:
+                reason: {type: string, minLength: 3, maxLength: 500}
+                days: {type: integer, minimum: 1, maximum: 30}
+      responses:
+        "200": {description: Temporary restriction applied, content: {application/json: {schema: {type: object, additionalProperties: true}}}}
+  /v1/users/{userId}/restore:
+    post:
+      tags: [Moderation]
+      operationId: restoreUserAccess
+      summary: Remove a temporary user restriction
+      parameters: [{$ref: "#/components/parameters/UserId"}]
+      requestBody: {$ref: "#/components/requestBodies/Reason"}
+      responses:
+        "200": {description: Access restored, content: {application/json: {schema: {type: object, additionalProperties: true}}}}
+  /v1/emergency/protect:
+    post:
+      tags: [Safety]
+      operationId: enableEmergencyProtectiveMode
+      summary: Hide all pending-review stories during an emergency
+      description: Reversible emergency protection. Does not delete data, ban users or affect published static hosting.
+      requestBody: {$ref: "#/components/requestBodies/Reason"}
+      responses:
+        "200": {description: Protective mode enabled, content: {application/json: {schema: {type: object, additionalProperties: true}}}}
+  /v1/backups:
+    post:
+      tags: [Operations]
+      operationId: createStagingBackup
+      summary: Create a staging metadata backup
+      requestBody:
+        content:
+          application/json:
+            schema: {type: object, additionalProperties: false}
+      responses:
+        "201": {description: Backup recorded, content: {application/json: {schema: {type: object, additionalProperties: true}}}}
+  /v1/github/change-requests:
+    post:
+      tags: [Operations]
+      operationId: draftGitHubChangeRequest
+      summary: Draft a constrained code-change request
+      description: Creates a reviewed request only; it does not expose shell access or unrestricted GitHub operations.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+              required: [summary, reason]
+              properties:
+                summary: {type: string, maxLength: 300}
+                reason: {type: string, maxLength: 1000}
+      responses:
+        "201": {description: Draft request created, content: {application/json: {schema: {type: object, additionalProperties: true}}}}
+  /v1/deployments/stage:
+    post:
+      tags: [Operations]
+      operationId: deployApprovedRevisionToStaging
+      summary: Queue a named revision for staging
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+              required: [revision, reason]
+              properties:
+                revision: {type: string, pattern: "^[A-Za-z0-9._/-]{1,100}$"}
+                reason: {type: string, maxLength: 500}
+      responses:
+        "201": {description: Staging deployment queued, content: {application/json: {schema: {type: object, additionalProperties: true}}}}
+  /v1/approvals:
+    get:
+      tags: [Approvals]
+      operationId: listPendingOwnerApprovals
+      summary: List actions awaiting owner decision
+      responses:
+        "200": {description: Pending approvals, content: {application/json: {schema: {type: object, additionalProperties: true}}}}
+    post:
+      tags: [Approvals]
+      operationId: requestOwnerApproval
+      summary: Ask the owner to approve a protected action
+      description: ChatGPT may create this request but cannot approve it. Approval is only available in the separate owner dashboard channel.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+              required: [action, targetId, reason]
+              properties:
+                action: {type: string, enum: [story.publish, deployment.rollback, content.delete-permanent, user.ban-permanent, legal.respond, financial.change]}
+                targetId: {type: string, maxLength: 100}
+                reason: {type: string, maxLength: 1000}
+                payload: {type: object, maxProperties: 20}
+      responses:
+        "201": {description: Approval request created, content: {application/json: {schema: {type: object, additionalProperties: true}}}}
+  /v1/audit:
+    get:
+      tags: [Overview]
+      operationId: listAuditEvents
+      summary: View recent append-only audit events
+      parameters:
+        - name: limit
+          in: query
+          schema: {type: integer, minimum: 1, maximum: 500, default: 100}
+      responses:
+        "200": {description: Recent audit events, content: {application/json: {schema: {type: object, additionalProperties: true}}}}
+  /v1/policy:
+    get:
+      tags: [Approvals]
+      operationId: getApprovalMatrix
+      summary: Explain which actions require owner approval
+      responses:
+        "200": {description: Approval policy, content: {application/json: {schema: {type: object, additionalProperties: true}}}}
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: opaque-management-key
+  parameters:
+    ContentId: {name: contentId, in: path, required: true, schema: {type: string}}
+    UserId: {name: userId, in: path, required: true, schema: {type: string}}
+  requestBodies:
+    Reason:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: false
+            required: [reason]
+            properties:
+              reason: {type: string, minLength: 3, maxLength: 500}
+  schemas:
+    Incident:
+      type: object
+      additionalProperties: true
+      required: [id, title, explanation, protectiveAction, recommendation]
+      properties:
+        id: {type: string}
+        title: {type: string}
+        explanation: {type: string}
+        protectiveAction: {type: string}
+        recommendation: {type: string}
+    Overview:
+      type: object
+      additionalProperties: false
+      required: [environment, launchApproved, protectiveMode, counts, incidents, recentProtectiveActions, recommendation, siteHealth]
+      properties:
+        environment: {type: string, const: staging}
+        launchApproved: {type: boolean, const: false}
+        protectiveMode: {type: boolean}
+        counts: {type: object, additionalProperties: {type: integer}}
+        incidents: {type: array, items: {$ref: "#/components/schemas/Incident"}}
+        recentProtectiveActions: {type: array, items: {type: object, additionalProperties: true}}
+        recommendation: {type: string}
+        siteHealth: {type: object, additionalProperties: true}

@@ -21,3 +21,7 @@ No accounts, database, publishing, analytics, tracking, secrets, AI chat, or rea
 Open `index.html` directly, or serve the folder with any static file server. No build step or dependencies are required.
 
 The draft is stored in browser `localStorage` on the current device. It is never uploaded by this prototype.
+
+## Owner control center
+
+The separate [`control-center`](control-center/) directory contains a staging-only management gateway and mobile owner dashboard. It is excluded from the GitHub Pages artifact and has no real-user launch path.

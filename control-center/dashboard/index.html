@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#102c29">
+  <title>Project Supernatural Control Center</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to operations</a>
+<header>
+  <div class="brand"><span>PS</span><div><strong>Control Center</strong><small>Owner staging console</small></div></div>
+  <div class="environment"><i></i> STAGING ONLY</div>
+</header>
+<main id="main">
+  <section class="welcome">
+    <div><p class="eyebrow">Project Supernatural operations</p><h1>See what needs attention. Act without losing control.</h1><p>One phone-sized view for safety, publishing, incidents and system health. Nothing here launches real users.</p></div>
+    <button id="connect">Connect securely</button>
+  </section>
+  <div id="connection" class="connection" hidden>
+    <label>Owner dashboard key<input id="owner-key" type="password" autocomplete="off" placeholder="Kept only in this tab"></label>
+    <label>Management API key<input id="api-key" type="password" autocomplete="off" placeholder="Kept only in this tab"></label>
+    <button id="load">Load overview</button>
+    <p id="message" role="status"></p>
+  </div>
+  <section class="summary" aria-labelledby="summary-title">
+    <div class="section-title"><div><p class="eyebrow">Right now</p><h2 id="summary-title">Operational overview</h2></div><button class="quiet" id="refresh">Refresh</button></div>
+    <div class="metrics">
+      <article><span id="report-count">—</span><p>Open reports</p></article>
+      <article><span id="incident-count">—</span><p>Active incidents</p></article>
+      <article><span id="hidden-count">—</span><p>Hidden items</p></article>
+      <article><span id="approval-count">—</span><p>Need approval</p></article>
+    </div>
+    <div class="recommendation"><span>Recommended next action</span><p id="recommendation">Connect to load staging operations.</p></div>
+  </section>
+  <section class="grid">
+    <article class="panel urgent">
+      <div class="panel-head"><div><p class="eyebrow">Safety</p><h2>Emergency controls</h2></div><span>Reversible</span></div>
+      <p>Immediately hide every story still awaiting review while an incident is assessed.</p>
+      <label>Reason<input id="emergency-reason" maxlength="240" placeholder="Required for the audit log"></label>
+      <button id="protect" class="danger">Enable protective mode</button>
+      <p class="hint">This does not delete content or suspend users.</p>
+    </article>
+    <article class="panel">
+      <div class="panel-head"><div><p class="eyebrow">System</p><h2>Site health</h2></div><span id="health-pill">Unknown</span></div>
+      <dl><div><dt>Public website</dt><dd id="public-health">—</dd></div><div><dt>Staging gateway</dt><dd id="staging-health">—</dd></div><div><dt>Latest backup</dt><dd id="backup-health">—</dd></div></dl>
+      <button id="backup" class="secondary">Create staging backup</button>
+    </article>
+  </section>
+  <section class="section">
+    <div class="section-title"><div><p class="eyebrow">Explain, protect, recommend</p><h2>Active incidents</h2></div></div>
+    <div id="incidents" class="list"><p class="empty">No loaded incidents.</p></div>
+  </section>
+  <section class="section">
+    <div class="section-title"><div><p class="eyebrow">Owner decision required</p><h2>Approval queue</h2></div></div>
+    <div id="approvals" class="list"><p class="empty">No pending approvals loaded.</p></div>
+  </section>
+  <section class="section">
+    <div class="section-title"><div><p class="eyebrow">Accountability</p><h2>Recent audit events</h2></div><a href="/openapi.yaml">OpenAPI schema</a></div>
+    <div id="audit" class="audit"><p class="empty">Connect to view the audit trail.</p></div>
+  </section>
+</main>
+<footer><strong>Project Supernatural</strong><p>Staging control surface. No real-user launch approval is built in.</p></footer>
+<script src="app.js"></script>
+</body>
+</html>

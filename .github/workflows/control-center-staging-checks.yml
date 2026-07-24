@@ -1,0 +1,31 @@
+name: Control Center staging checks
+
+on:
+  pull_request:
+    paths:
+      - "control-center/**"
+      - ".github/workflows/control-center-staging-checks.yml"
+  push:
+    branches-ignore: [main]
+    paths:
+      - "control-center/**"
+      - ".github/workflows/control-center-staging-checks.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: control-center
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node --check server.js
+      - run: node --check dashboard/app.js
+      - run: node --test
