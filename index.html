@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A calm, privacy-minded place to share unusual experiences without forced conclusions.">
+  <meta name="theme-color" content="#173f3a">
+  <title>Project Supernatural — Experiences first</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <a class="brand" href="#top" aria-label="Project Supernatural, home">
+    <span class="brand-mark" aria-hidden="true">PS</span>
+    <span>Project Supernatural</span>
+  </a>
+  <button class="menu-button" id="menu" type="button" aria-expanded="false" aria-controls="nav">
+    <span class="menu-label">Menu</span><span aria-hidden="true">☰</span>
+  </button>
+  <nav id="nav" aria-label="Primary navigation">
+    <a href="#experiences">Experiences</a>
+    <a href="#how">How it works</a>
+    <a href="#draft">Write privately</a>
+    <a href="#rules">Community rules</a>
+    <a href="#about">About</a>
+  </nav>
+</header>
+
+<main id="main">
+  <section class="hero" id="top" aria-labelledby="hero-title">
+    <div class="hero-copy">
+      <p class="eyebrow">Experiences first. Explanations remain open.</p>
+      <h1 id="hero-title">Something happened that you still think about.</h1>
+      <p class="lead">Read experiences from people with similar questions. Share under a nickname, choose how you want to be heard, and explore meaning without ridicule or forced conclusions.</p>
+      <div class="actions">
+        <a class="button primary" href="#experiences">Explore experiences</a>
+        <a class="button secondary" href="#draft">Start a private draft</a>
+      </div>
+      <ul class="trust-list" aria-label="Community commitments">
+        <li>No popularity rankings</li><li>No donor badges</li><li>No forced conclusions</li>
+      </ul>
+    </div>
+    <aside class="hero-note" aria-label="What this community is">
+      <p class="note-label">A place to be heard</p>
+      <blockquote>“I don’t need someone to solve it. I want somewhere honest to put it into words.”</blockquote>
+      <p>Stories can be meaningful without being treated as proof. Moderation protects people; it does not decide metaphysical truth.</p>
+    </aside>
+  </section>
+
+  <section id="experiences" class="section">
+    <div class="section-heading">
+      <div><p class="eyebrow">A calmer kind of community</p><h2>Stories are not a contest</h2></div>
+      <p>Each storyteller chooses how the community should respond. These sample cards show the intended experience; no real user stories are displayed.</p>
+    </div>
+    <div class="cards">
+      <article><span class="response-tag listen">Just listen</span><h3>A presence during illness</h3><p>Shared for acknowledgement only, without analysis or debate.</p><span class="sample">Prototype example</span></article>
+      <article><span class="response-tag similar">Similar experiences</span><h3>A dream that returned for years</h3><p>The storyteller wants to hear from people who lived through something comparable.</p><span class="sample">Prototype example</span></article>
+      <article><span class="response-tag perspectives">Different perspectives</span><h3>An event after prayer</h3><p>Spiritual, historical and grounded possibilities may be discussed without imposing a verdict.</p><span class="sample">Prototype example</span></article>
+    </div>
+  </section>
+
+  <section id="how" class="section surface">
+    <div class="section-heading compact"><div><p class="eyebrow">Simple by design</p><h2>Share with control</h2></div></div>
+    <ol class="steps">
+      <li><span class="step-number" aria-hidden="true">1</span><div><h3>Write in your own words</h3><p>Your browser can keep a private draft before anything is published.</p></div></li>
+      <li><span class="step-number" aria-hidden="true">2</span><div><h3>Choose how to be heard</h3><p>Ask for listening, similar stories, perspectives or open discussion.</p></div></li>
+      <li><span class="step-number" aria-hidden="true">3</span><div><h3>Review what becomes public</h3><p>Remove names and identifying details about other people.</p></div></li>
+      <li><span class="step-number" aria-hidden="true">4</span><div><h3>Privacy and safety review</h3><p>Moderation checks publishability, not metaphysical truth.</p></div></li>
+    </ol>
+  </section>
+
+  <section id="draft" class="section">
+    <div class="draft-shell">
+      <div class="draft-intro">
+        <p class="eyebrow">Private drafting space</p>
+        <h2>Begin without publishing</h2>
+        <p>This prototype saves only in this browser on this device. It does not send, publish, or upload your text.</p>
+        <div class="privacy-note"><strong>Before you write</strong><p>Avoid full names, addresses, medical records, or details that identify another person. This is a prototype, not an emergency or professional-support service.</p></div>
+      </div>
+      <form id="draft-form" novalidate>
+        <div class="field-heading"><h3>Your private draft</h3><span class="save-state" id="save-state">Nothing saved yet</span></div>
+        <label for="title">Title <span class="optional">(optional)</span></label>
+        <input id="title" name="title" maxlength="100" autocomplete="off" placeholder="A short title">
+        <div class="field-meta"><label for="story">What happened?</label><span id="story-count">0 / 5000</span></div>
+        <textarea id="story" name="story" rows="8" maxlength="5000" placeholder="Write in your own words…"></textarea>
+        <label for="response">How would you like people to respond?</label>
+        <select id="response" name="response">
+          <option value="listen">Just listen</option>
+          <option value="similar">Similar experiences</option>
+          <option value="perspectives">Different perspectives and sources</option>
+          <option value="open">Open respectful discussion</option>
+        </select>
+        <div class="form-actions">
+          <button type="button" id="save" class="button primary">Save private draft</button>
+          <button type="button" id="clear" class="text-button">Delete draft</button>
+        </div>
+        <p id="status" class="status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
+  <section id="rules" class="section rules-section">
+    <div class="section-heading">
+      <div><p class="eyebrow">Community rules</p><h2>Protect people, not one approved interpretation</h2></div>
+      <p>These boundaries apply to every story and response. They make room for uncertainty while keeping the community humane.</p>
+    </div>
+    <div class="rules">
+      <article><span>01</span><div><h3>Respect the person</h3><p>Disagree with ideas without degrading, mocking or harassing people.</p></div></article>
+      <article><span>02</span><div><h3>Offer possibilities</h3><p>Do not diagnose, declare certainty, or issue divine commands.</p></div></article>
+      <article><span>03</span><div><h3>Protect privacy</h3><p>Do not expose names or identifiable details about third parties.</p></div></article>
+      <article><span>04</span><div><h3>Do not exploit</h3><p>No solicitation, pressure, dangerous advice or financial approaches.</p></div></article>
+      <article><span>05</span><div><h3>Follow the response choice</h3><p>Listen when the storyteller asks only to be heard.</p></div></article>
+      <article><span>06</span><div><h3>Be genuine and lawful</h3><p>No impersonation, spam, threats or fabricated evidence.</p></div></article>
+    </div>
+    <p class="moderation-note"><strong>Important:</strong> Published stories would be reviewed for privacy, safety and these rules—not independently verified as fact.</p>
+  </section>
+
+  <section id="about" class="section about">
+    <div><p class="eyebrow">Why this exists</p><h2>The kind of place the founder once needed</h2></div>
+    <div><p>Unusual experiences and spiritual questions have been part of my life for many years. I am writing a book about the experiences that shaped that path, but I do not claim final answers or professional authority.</p><p>Project Supernatural is honest about the difference between what happened and what we think it may mean.</p></div>
+  </section>
+
+  <aside id="support" class="support" aria-labelledby="support-title">
+    <div><p class="eyebrow">Separate and voluntary</p><h2 id="support-title">Support never changes your place here</h2><p>The community remains free. Financial support never affects access, publication, moderation, visibility or how anyone is treated.</p></div>
+    <a class="button support-button" href="https://www.paypal.com/ncp/payment/DKU8HJVGNNKQS" target="_blank" rel="noopener noreferrer">Visit voluntary support page <span aria-hidden="true">↗</span></a>
+  </aside>
+</main>
+
+<footer>
+  <div><a class="brand footer-brand" href="#top"><span class="brand-mark" aria-hidden="true">PS</span><span>Project Supernatural</span></a><p>Experiences first. Explanations remain open.</p></div>
+  <div class="footer-meta"><p>Prototype only — no accounts, publishing, analytics or tracking.</p><a href="#rules">Community rules</a><a href="#draft">Private draft</a></div>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>
