@@ -3,87 +3,184 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="A calm, privacy-minded place to share unusual experiences without forced conclusions.">
-  <meta name="theme-color" content="#173f3a">
-  <title>Project Supernatural — Experiences first</title>
+  <meta name="description" content="A calm, open-minded archive of personal experiences, questions and perspectives.">
+  <meta name="theme-color" content="#f6f3ee">
+  <title>Project Supernatural — Personal experiences, openly explored</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
+
 <header class="site-header">
-  <a class="brand" href="#top" aria-label="Project Supernatural, home">
-    <span class="brand-mark" aria-hidden="true">PS</span>
-    <span>Project Supernatural</span>
-  </a>
-  <button class="menu-button" id="menu" type="button" aria-expanded="false" aria-controls="nav">
-    <span class="menu-label">Menu</span><span aria-hidden="true">☰</span>
-  </button>
-  <nav id="nav" aria-label="Primary navigation">
-    <a href="#experiences">Experiences</a>
-    <a href="#how">How it works</a>
-    <a href="#draft">Write privately</a>
-    <a href="#rules">Community rules</a>
-    <a href="#about">About</a>
-  </nav>
+  <div class="header-inner">
+    <a class="wordmark" href="#top" aria-label="Project Supernatural, home">Project Supernatural</a>
+    <button class="menu-button" id="menu" type="button" aria-expanded="false" aria-controls="site-navigation">
+      <span>Menu</span>
+      <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <nav id="site-navigation" aria-label="Primary navigation">
+      <div class="nav-main">
+        <a href="#experiences">Explore</a>
+        <a href="#topics">Topics</a>
+        <a href="#how">How it works</a>
+        <a href="#about">About</a>
+      </div>
+      <div class="nav-actions">
+        <a class="sign-in" href="#prototype-status">Sign in</a>
+        <a class="button button-small" href="#draft">Share an experience</a>
+      </div>
+    </nav>
+  </div>
 </header>
 
 <main id="main">
   <section class="hero" id="top" aria-labelledby="hero-title">
-    <div class="hero-copy">
-      <p class="eyebrow">Experiences first. Explanations remain open.</p>
-      <h1 id="hero-title">Something happened that you still think about.</h1>
-      <p class="lead">Read experiences from people with similar questions. Share under a nickname, choose how you want to be heard, and explore meaning without ridicule or forced conclusions.</p>
-      <div class="actions">
-        <a class="button primary" href="#experiences">Explore experiences</a>
-        <a class="button secondary" href="#draft">Start a private draft</a>
+    <div class="content-width">
+      <p class="kicker">Experiences first. Explanations remain open.</p>
+      <h1 id="hero-title">A place to describe what happened — without being told what it must mean.</h1>
+      <p class="hero-summary">Read personal experiences, explore different perspectives, or share your own under a nickname.</p>
+      <div class="hero-actions">
+        <a class="button" href="#experiences">Explore experiences</a>
+        <a class="text-link" href="#draft">Write privately <span aria-hidden="true">→</span></a>
       </div>
-      <ul class="trust-list" aria-label="Community commitments">
-        <li>No popularity rankings</li><li>No donor badges</li><li>No forced conclusions</li>
+    </div>
+  </section>
+
+  <section class="search-section" aria-labelledby="search-title">
+    <div class="content-width">
+      <h2 class="visually-hidden" id="search-title">Search the experience archive</h2>
+      <form class="search-form" id="search-form" role="search">
+        <label for="experience-search">Search experiences, themes or questions</label>
+        <div class="search-field">
+          <svg aria-hidden="true" viewBox="0 0 24 24" width="21" height="21"><circle cx="11" cy="11" r="7"/><path d="m16 16 4 4"/></svg>
+          <input id="experience-search" type="search" autocomplete="off" placeholder="Search experiences, themes or questions">
+          <button type="submit">Search</button>
+        </div>
+        <p class="search-status" id="search-status" role="status" aria-live="polite">Prototype search filters the examples on this page only.</p>
+      </form>
+    </div>
+  </section>
+
+  <section class="section topics-section" id="topics" aria-labelledby="topics-title">
+    <div class="content-width">
+      <div class="section-heading">
+        <p class="kicker">Browse by subject</p>
+        <h2 id="topics-title">Topics people return to</h2>
+      </div>
+      <ul class="topic-links">
+        <li><a href="#experiences" data-topic="dreams">Dreams and visions <span aria-hidden="true">→</span></a></li>
+        <li><a href="#experiences" data-topic="presence">Presence and apparitions <span aria-hidden="true">→</span></a></li>
+        <li><a href="#experiences" data-topic="prayer">Prayer and coincidence <span aria-hidden="true">→</span></a></li>
+        <li><a href="#experiences" data-topic="near-death">Near-death and out-of-body <span aria-hidden="true">→</span></a></li>
+        <li><a href="#experiences" data-topic="premonitions">Premonitions <span aria-hidden="true">→</span></a></li>
+        <li><a href="#experiences" data-topic="uncategorized">Experiences without a clear category <span aria-hidden="true">→</span></a></li>
       </ul>
     </div>
-    <aside class="hero-note" aria-label="What this community is">
-      <p class="note-label">A place to be heard</p>
-      <blockquote>“I don’t need someone to solve it. I want somewhere honest to put it into words.”</blockquote>
-      <p>Stories can be meaningful without being treated as proof. Moderation protects people; it does not decide metaphysical truth.</p>
-    </aside>
   </section>
 
-  <section id="experiences" class="section">
-    <div class="section-heading">
-      <div><p class="eyebrow">A calmer kind of community</p><h2>Stories are not a contest</h2></div>
-      <p>Each storyteller chooses how the community should respond. These sample cards show the intended experience; no real user stories are displayed.</p>
+  <section class="section experiences-section" id="experiences" aria-labelledby="experiences-title">
+    <div class="content-width">
+      <div class="section-heading split-heading">
+        <div>
+          <p class="kicker">Recent experiences</p>
+          <h2 id="experiences-title">Personal accounts, read on their own terms</h2>
+        </div>
+        <p>Sample content is clearly marked. No real user stories or accounts appear in this prototype.</p>
+      </div>
+
+      <div class="story-list" id="story-list">
+        <article class="story-item" data-search="dream returned twenty years place perspective memory" data-topic="dreams">
+          <div class="story-meta">
+            <span>Dreams and visions</span>
+            <span class="response-label perspectives">Different perspectives requested</span>
+          </div>
+          <h3><a href="#prototype-status">A dream that returned after twenty years</a></h3>
+          <p class="story-excerpt">I had almost forgotten it until the same place appeared again, with details that made the memory feel newly relevant.</p>
+          <footer><span>8 min read</span><span>Shared under a nickname</span><strong>Prototype example</strong></footer>
+        </article>
+
+        <article class="story-item" data-search="presence illness room hospital listen comfort" data-topic="presence">
+          <div class="story-meta">
+            <span>Presence and apparitions</span>
+            <span class="response-label listen">Just listen</span>
+          </div>
+          <h3><a href="#prototype-status">The quiet presence I noticed during an illness</a></h3>
+          <p class="story-excerpt">Nothing dramatic happened. I simply became aware of someone—or something—near the doorway, and the room felt less frightening.</p>
+          <footer><span>5 min read</span><span>Anonymous</span><strong>Prototype example</strong></footer>
+        </article>
+
+        <article class="story-item" data-search="prayer coincidence phone call timing similar experiences" data-topic="prayer">
+          <div class="story-meta">
+            <span>Prayer and coincidence</span>
+            <span class="response-label similar">Similar experiences</span>
+          </div>
+          <h3><a href="#prototype-status">A phone call that came at an unlikely moment</a></h3>
+          <p class="story-excerpt">I had just finished asking for help when an old friend called with the exact information I needed. I still do not know what to make of the timing.</p>
+          <footer><span>6 min read</span><span>Shared under a nickname</span><strong>Prototype example</strong></footer>
+        </article>
+
+        <article class="story-item" data-search="premonition train journey warning open discussion" data-topic="premonitions">
+          <div class="story-meta">
+            <span>Premonitions</span>
+            <span class="response-label open">Open respectful discussion</span>
+          </div>
+          <h3><a href="#prototype-status">The unease that changed a planned journey</a></h3>
+          <p class="story-excerpt">I cancelled a trip because of a persistent feeling I could not explain. Later events made me question whether it was chance, intuition, or something else.</p>
+          <footer><span>7 min read</span><span>Anonymous</span><strong>Prototype example</strong></footer>
+        </article>
+      </div>
+      <p class="no-results" id="no-results" hidden>No prototype experiences match that search. Try a broader word or browse a topic.</p>
     </div>
-    <div class="cards">
-      <article><span class="response-tag listen">Just listen</span><h3>A presence during illness</h3><p>Shared for acknowledgement only, without analysis or debate.</p><span class="sample">Prototype example</span></article>
-      <article><span class="response-tag similar">Similar experiences</span><h3>A dream that returned for years</h3><p>The storyteller wants to hear from people who lived through something comparable.</p><span class="sample">Prototype example</span></article>
-      <article><span class="response-tag perspectives">Different perspectives</span><h3>An event after prayer</h3><p>Spiritual, historical and grounded possibilities may be discussed without imposing a verdict.</p><span class="sample">Prototype example</span></article>
+  </section>
+
+  <section class="section response-section" aria-labelledby="responses-title">
+    <div class="content-width response-layout">
+      <div class="section-heading">
+        <p class="kicker">Response preference</p>
+        <h2 id="responses-title">The storyteller chooses the kind of conversation</h2>
+      </div>
+      <ul class="response-modes">
+        <li><span class="response-label listen">Just listen</span><p>Acknowledge the experience without analysis or advice.</p></li>
+        <li><span class="response-label similar">Similar experiences</span><p>Share relevant personal accounts without comparison or competition.</p></li>
+        <li><span class="response-label perspectives">Different perspectives and sources</span><p>Offer grounded possibilities without insisting on one answer.</p></li>
+        <li><span class="response-label open">Open respectful discussion</span><p>Explore interpretations while following all community rules.</p></li>
+      </ul>
     </div>
   </section>
 
-  <section id="how" class="section surface">
-    <div class="section-heading compact"><div><p class="eyebrow">Simple by design</p><h2>Share with control</h2></div></div>
-    <ol class="steps">
-      <li><span class="step-number" aria-hidden="true">1</span><div><h3>Write in your own words</h3><p>Your browser can keep a private draft before anything is published.</p></div></li>
-      <li><span class="step-number" aria-hidden="true">2</span><div><h3>Choose how to be heard</h3><p>Ask for listening, similar stories, perspectives or open discussion.</p></div></li>
-      <li><span class="step-number" aria-hidden="true">3</span><div><h3>Review what becomes public</h3><p>Remove names and identifying details about other people.</p></div></li>
-      <li><span class="step-number" aria-hidden="true">4</span><div><h3>Privacy and safety review</h3><p>Moderation checks publishability, not metaphysical truth.</p></div></li>
-    </ol>
+  <section class="section how-section" id="how" aria-labelledby="how-title">
+    <div class="content-width">
+      <div class="section-heading">
+        <p class="kicker">How the community works</p>
+        <h2 id="how-title">Clear boundaries leave room for uncertainty</h2>
+      </div>
+      <div class="principles">
+        <article><span>01</span><h3>You choose how to be heard.</h3></article>
+        <article><span>02</span><h3>Experience and interpretation are shown separately.</h3></article>
+        <article><span>03</span><h3>Moderation protects people, not one approved belief.</h3></article>
+        <article><span>04</span><h3>Published stories are reviewed for privacy and community rules, not independently verified as fact.</h3></article>
+      </div>
+      <a class="text-link" href="#community-rules">Read the community rules <span aria-hidden="true">→</span></a>
+    </div>
   </section>
 
-  <section id="draft" class="section">
-    <div class="draft-shell">
+  <section class="section draft-section" id="draft" aria-labelledby="draft-title">
+    <div class="content-width draft-layout">
       <div class="draft-intro">
-        <p class="eyebrow">Private drafting space</p>
-        <h2>Begin without publishing</h2>
-        <p>This prototype saves only in this browser on this device. It does not send, publish, or upload your text.</p>
-        <div class="privacy-note"><strong>Before you write</strong><p>Avoid full names, addresses, medical records, or details that identify another person. This is a prototype, not an emergency or professional-support service.</p></div>
+        <p class="kicker">Private draft</p>
+        <h2 id="draft-title">Start with your own words</h2>
+        <p>This prototype saves only in this browser on this device. It does not send, publish or upload your text.</p>
+        <p class="draft-guidance"><strong>Before you write:</strong> avoid names, addresses, medical records, or details that identify another person. This is not an emergency or professional-support service.</p>
       </div>
       <form id="draft-form" novalidate>
-        <div class="field-heading"><h3>Your private draft</h3><span class="save-state" id="save-state">Nothing saved yet</span></div>
-        <label for="title">Title <span class="optional">(optional)</span></label>
-        <input id="title" name="title" maxlength="100" autocomplete="off" placeholder="A short title">
-        <div class="field-meta"><label for="story">What happened?</label><span id="story-count">0 / 5000</span></div>
-        <textarea id="story" name="story" rows="8" maxlength="5000" placeholder="Write in your own words…"></textarea>
+        <div class="form-heading">
+          <h3>Your private draft</h3>
+          <span class="save-state" id="save-state">Nothing saved yet</span>
+        </div>
+        <label for="title">Title <span>(optional)</span></label>
+        <input id="title" name="title" maxlength="100" autocomplete="off" placeholder="A short, descriptive title">
+        <div class="label-row"><label for="story">What happened?</label><span id="story-count">0 / 5000</span></div>
+        <textarea id="story" name="story" rows="9" maxlength="5000" placeholder="Write in your own words…"></textarea>
         <label for="response">How would you like people to respond?</label>
         <select id="response" name="response">
           <option value="listen">Just listen</option>
@@ -92,45 +189,66 @@
           <option value="open">Open respectful discussion</option>
         </select>
         <div class="form-actions">
-          <button type="button" id="save" class="button primary">Save private draft</button>
-          <button type="button" id="clear" class="text-button">Delete draft</button>
+          <button type="button" id="save" class="button">Save private draft</button>
+          <button type="button" id="clear" class="button-link danger-link">Delete draft</button>
         </div>
-        <p id="status" class="status" role="status" aria-live="polite"></p>
+        <p id="status" class="form-status" role="status" aria-live="polite"></p>
       </form>
     </div>
   </section>
 
-  <section id="rules" class="section rules-section">
-    <div class="section-heading">
-      <div><p class="eyebrow">Community rules</p><h2>Protect people, not one approved interpretation</h2></div>
-      <p>These boundaries apply to every story and response. They make room for uncertainty while keeping the community humane.</p>
+  <section class="section about-section" id="about" aria-labelledby="about-title">
+    <div class="content-width about-layout">
+      <div>
+        <p class="kicker">About the project</p>
+        <h2 id="about-title">Built from experience, without claiming final answers</h2>
+      </div>
+      <div class="about-copy">
+        <p>Unusual experiences and spiritual questions have been part of the founder’s life for many years. Project Supernatural is being shaped as the kind of careful, open community that was once difficult to find.</p>
+        <p>The founder is not presented as a spiritual authority, therapist or researcher. The project keeps a clear distinction between what someone experienced and what any of us think it may mean.</p>
+        <p>Financial support never affects access, publication, moderation or how anyone is treated.</p>
+      </div>
     </div>
-    <div class="rules">
-      <article><span>01</span><div><h3>Respect the person</h3><p>Disagree with ideas without degrading, mocking or harassing people.</p></div></article>
-      <article><span>02</span><div><h3>Offer possibilities</h3><p>Do not diagnose, declare certainty, or issue divine commands.</p></div></article>
-      <article><span>03</span><div><h3>Protect privacy</h3><p>Do not expose names or identifiable details about third parties.</p></div></article>
-      <article><span>04</span><div><h3>Do not exploit</h3><p>No solicitation, pressure, dangerous advice or financial approaches.</p></div></article>
-      <article><span>05</span><div><h3>Follow the response choice</h3><p>Listen when the storyteller asks only to be heard.</p></div></article>
-      <article><span>06</span><div><h3>Be genuine and lawful</h3><p>No impersonation, spam, threats or fabricated evidence.</p></div></article>
-    </div>
-    <p class="moderation-note"><strong>Important:</strong> Published stories would be reviewed for privacy, safety and these rules—not independently verified as fact.</p>
   </section>
 
-  <section id="about" class="section about">
-    <div><p class="eyebrow">Why this exists</p><h2>The kind of place the founder once needed</h2></div>
-    <div><p>Unusual experiences and spiritual questions have been part of my life for many years. I am writing a book about the experiences that shaped that path, but I do not claim final answers or professional authority.</p><p>Project Supernatural is honest about the difference between what happened and what we think it may mean.</p></div>
+  <section class="policy-section" id="community-rules" aria-labelledby="rules-title">
+    <div class="content-width policy-grid">
+      <div><p class="kicker">Community rules</p><h2 id="rules-title">Protect people. Leave conclusions open.</h2></div>
+      <ul>
+        <li>Respect the person, even when questioning an interpretation.</li>
+        <li>Do not diagnose, threaten, exploit or issue divine commands.</li>
+        <li>Protect the privacy of everyone named in a story.</li>
+        <li>Follow the storyteller’s selected response preference.</li>
+      </ul>
+    </div>
   </section>
 
-  <aside id="support" class="support" aria-labelledby="support-title">
-    <div><p class="eyebrow">Separate and voluntary</p><h2 id="support-title">Support never changes your place here</h2><p>The community remains free. Financial support never affects access, publication, moderation, visibility or how anyone is treated.</p></div>
-    <a class="button support-button" href="https://www.paypal.com/ncp/payment/DKU8HJVGNNKQS" target="_blank" rel="noopener noreferrer">Visit voluntary support page <span aria-hidden="true">↗</span></a>
-  </aside>
+  <section class="prototype-notice" id="prototype-status" aria-labelledby="prototype-title">
+    <div class="content-width">
+      <h2 id="prototype-title">Prototype status</h2>
+      <p>This is a static design prototype. There are no accounts, public submissions, live comments, analytics or tracking. Example stories are fictional interface samples and are not presented as real experiences.</p>
+    </div>
+  </section>
 </main>
 
-<footer>
-  <div><a class="brand footer-brand" href="#top"><span class="brand-mark" aria-hidden="true">PS</span><span>Project Supernatural</span></a><p>Experiences first. Explanations remain open.</p></div>
-  <div class="footer-meta"><p>Prototype only — no accounts, publishing, analytics or tracking.</p><a href="#rules">Community rules</a><a href="#draft">Private draft</a></div>
+<footer class="site-footer">
+  <div class="content-width footer-layout">
+    <div>
+      <a class="wordmark footer-wordmark" href="#top">Project Supernatural</a>
+      <p>Experiences first. Explanations remain open.</p>
+    </div>
+    <nav aria-label="Footer navigation">
+      <a href="#about">About</a>
+      <a href="#community-rules">Community rules</a>
+      <a href="#prototype-status">Privacy</a>
+      <a href="#prototype-status">Terms</a>
+      <a href="https://www.paypal.com/ncp/payment/DKU8HJVGNNKQS" target="_blank" rel="noopener noreferrer">Support the project</a>
+      <a href="#prototype-status">Prototype status</a>
+    </nav>
+    <p class="support-note">Support is voluntary and never influences access or moderation.</p>
+  </div>
 </footer>
+
 <script src="script.js"></script>
 </body>
 </html>

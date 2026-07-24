@@ -1,34 +1,38 @@
 const menuButton = document.querySelector("#menu");
-const nav = document.querySelector("#nav");
-const form = document.querySelector("#draft-form");
-const fields = ["title", "story", "response"];
+const navigation = document.querySelector("#site-navigation");
+const draftForm = document.querySelector("#draft-form");
+const draftFields = ["title", "story", "response"];
 const status = document.querySelector("#status");
 const saveState = document.querySelector("#save-state");
 const storyCount = document.querySelector("#story-count");
 const storageKey = "project-supernatural-private-draft";
 
-function setMenu(open) {
-  nav.classList.toggle("open", open);
+function setMenu(open, returnFocus = false) {
+  navigation.classList.toggle("open", open);
   menuButton.setAttribute("aria-expanded", String(open));
-  menuButton.querySelector("[aria-hidden]").textContent = open ? "×" : "☰";
+  menuButton.querySelector("span").textContent = open ? "Close" : "Menu";
+  menuButton.querySelector("svg").innerHTML = open
+    ? '<path d="M6 6l12 12M18 6 6 18"/>'
+    : '<path d="M4 7h16M4 12h16M4 17h16"/>';
+  if (returnFocus) menuButton.focus();
 }
 
-menuButton.addEventListener("click", () => setMenu(!nav.classList.contains("open")));
-nav.addEventListener("click", event => {
-  if (event.target.matches("a")) setMenu(false);
+menuButton.addEventListener("click", () => setMenu(!navigation.classList.contains("open")));
+navigation.addEventListener("click", event => {
+  if (event.target.closest("a")) setMenu(false);
 });
 document.addEventListener("keydown", event => {
-  if (event.key === "Escape") {
-    setMenu(false);
-    menuButton.focus();
-  }
+  if (event.key === "Escape" && navigation.classList.contains("open")) setMenu(false, true);
 });
 document.addEventListener("click", event => {
   if (!event.target.closest(".site-header")) setMenu(false);
 });
+window.addEventListener("resize", () => {
+  if (window.innerWidth > 760) setMenu(false);
+});
 
 function draftData() {
-  return Object.fromEntries(fields.map(id => [id, document.getElementById(id).value]));
+  return Object.fromEntries(draftFields.map(id => [id, document.getElementById(id).value]));
 }
 
 function updateCount() {
@@ -37,10 +41,9 @@ function updateCount() {
 
 function saveDraft(announce = true) {
   try {
-    const data = draftData();
-    localStorage.setItem(storageKey, JSON.stringify({...data, savedAt: Date.now()}));
+    localStorage.setItem(storageKey, JSON.stringify({...draftData(), savedAt: Date.now()}));
     saveState.textContent = "Saved on this device";
-    if (announce) status.textContent = "Private draft saved. Nothing was uploaded or published.";
+    if (announce) status.textContent = "Private draft saved in this browser. Nothing was uploaded or published.";
   } catch {
     saveState.textContent = "Could not save";
     status.textContent = "This browser blocked local saving. Copy your text somewhere private before leaving.";
@@ -51,7 +54,7 @@ function restoreDraft() {
   try {
     const data = JSON.parse(localStorage.getItem(storageKey) || "null");
     if (!data) return;
-    fields.forEach(id => {
+    draftFields.forEach(id => {
       if (typeof data[id] === "string") document.getElementById(id).value = data[id];
     });
     saveState.textContent = "Saved draft restored";
@@ -63,7 +66,7 @@ function restoreDraft() {
 }
 
 let autosaveTimer;
-form.addEventListener("input", () => {
+draftForm.addEventListener("input", () => {
   updateCount();
   saveState.textContent = "Unsaved changes";
   status.textContent = "";
@@ -75,14 +78,50 @@ document.querySelector("#save").addEventListener("click", () => {
   saveDraft(true);
 });
 document.querySelector("#clear").addEventListener("click", () => {
-  const hasContent = fields.some(id => document.getElementById(id).value.trim());
+  const hasContent = draftFields.some(id => document.getElementById(id).value.trim());
   if (hasContent && !window.confirm("Delete this private draft from this browser? This cannot be undone.")) return;
   localStorage.removeItem(storageKey);
-  form.reset();
+  draftForm.reset();
   updateCount();
   saveState.textContent = "Nothing saved yet";
   status.textContent = "Private draft deleted from this browser.";
   document.querySelector("#title").focus();
+});
+
+const searchForm = document.querySelector("#search-form");
+const searchInput = document.querySelector("#experience-search");
+const searchStatus = document.querySelector("#search-status");
+const storyItems = [...document.querySelectorAll(".story-item")];
+const noResults = document.querySelector("#no-results");
+
+function filterStories(query) {
+  const normalized = query.trim().toLowerCase();
+  let matches = 0;
+  storyItems.forEach(item => {
+    const match = !normalized || item.dataset.search.includes(normalized) || item.dataset.topic.includes(normalized);
+    item.hidden = !match;
+    if (match) matches += 1;
+  });
+  noResults.hidden = matches !== 0;
+  searchStatus.textContent = normalized
+    ? `${matches} prototype ${matches === 1 ? "experience" : "experiences"} found for “${query.trim()}”.`
+    : "Prototype search filters the examples on this page only.";
+}
+
+searchForm.addEventListener("submit", event => {
+  event.preventDefault();
+  filterStories(searchInput.value);
+  document.querySelector("#experiences-title").focus({preventScroll:true});
+  document.querySelector("#experiences").scrollIntoView();
+});
+searchInput.addEventListener("input", () => {
+  if (!searchInput.value) filterStories("");
+});
+document.querySelectorAll("[data-topic]").forEach(link => {
+  link.addEventListener("click", () => {
+    searchInput.value = link.dataset.topic;
+    filterStories(link.dataset.topic);
+  });
 });
 
 restoreDraft();
