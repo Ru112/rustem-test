@@ -1,7 +1,7 @@
 const menuButton = document.querySelector("#menu");
 const navigation = document.querySelector("#site-navigation");
 const draftForm = document.querySelector("#draft-form");
-const draftFields = ["title", "story", "response"];
+const draftFields = ["title", "story", "matter", "meaning", "response"];
 const status = document.querySelector("#status");
 const saveState = document.querySelector("#save-state");
 const storyCount = document.querySelector("#story-count");
@@ -43,7 +43,7 @@ function saveDraft(announce = true) {
   try {
     localStorage.setItem(storageKey, JSON.stringify({...draftData(), savedAt: Date.now()}));
     saveState.textContent = "Saved on this device";
-    if (announce) status.textContent = "Private draft saved in this browser. Nothing was uploaded or published.";
+    if (announce) status.textContent = "Draft saved on this device.";
   } catch {
     saveState.textContent = "Could not save";
     status.textContent = "This browser blocked local saving. Copy your text somewhere private before leaving.";
@@ -58,7 +58,7 @@ function restoreDraft() {
       if (typeof data[id] === "string") document.getElementById(id).value = data[id];
     });
     saveState.textContent = "Saved draft restored";
-    status.textContent = "Your private draft was restored from this browser.";
+    status.textContent = "Your draft was restored from this browser.";
   } catch {
     status.textContent = "A saved draft could not be restored.";
   }
@@ -69,7 +69,7 @@ let autosaveTimer;
 draftForm.addEventListener("input", () => {
   updateCount();
   saveState.textContent = "Unsaved changes";
-  status.textContent = "";
+  status.textContent = "Your changes have not been saved yet.";
   clearTimeout(autosaveTimer);
   autosaveTimer = setTimeout(() => saveDraft(false), 800);
 });
@@ -84,7 +84,7 @@ document.querySelector("#clear").addEventListener("click", () => {
   draftForm.reset();
   updateCount();
   saveState.textContent = "Nothing saved yet";
-  status.textContent = "Private draft deleted from this browser.";
+  status.textContent = "This draft was removed from this browser.";
   document.querySelector("#title").focus();
 });
 
@@ -104,8 +104,8 @@ function filterStories(query) {
   });
   noResults.hidden = matches !== 0;
   searchStatus.textContent = normalized
-    ? `${matches} prototype ${matches === 1 ? "experience" : "experiences"} found for “${query.trim()}”.`
-    : "Prototype search filters the examples on this page only.";
+    ? `${matches} prototype ${matches === 1 ? "example" : "examples"} found for “${query.trim()}”. This search checks only the examples on this page.`
+    : "This search checks only the prototype examples on this page.";
 }
 
 searchForm.addEventListener("submit", event => {
