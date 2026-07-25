@@ -43,7 +43,9 @@ function saveDraft(announce = true) {
   try {
     localStorage.setItem(storageKey, JSON.stringify({...draftData(), savedAt: Date.now()}));
     saveState.textContent = "Saved on this device";
-    if (announce) status.textContent = "Draft saved on this device.";
+    status.textContent = announce
+      ? "Draft saved on this device."
+      : "Draft saved automatically on this device.";
   } catch {
     saveState.textContent = "Could not save";
     status.textContent = "This browser blocked local saving. Copy your text somewhere private before leaving.";
