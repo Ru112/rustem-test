@@ -4,7 +4,7 @@ This audit covers the clean homepage rebuild on `redesign/editorial-community-v2
 
 ## Hero
 
-- Current wording: “Some experiences stay with you because they are difficult to explain.”
+- Current wording: “Some experiences are hard to explain. They’re still worth putting into words.”
 - Purpose: Introduces the human experience once and leads directly to the private draft.
 - Product state: The private draft works now. Public sharing remains closed.
 
@@ -20,9 +20,15 @@ This audit covers the clean homepage rebuild on `redesign/editorial-community-v2
 - Purpose: The preview explains the control; the form provides the working choice.
 - Product state: Saved locally with the draft. Public display is not active.
 
+## How the project will work
+
+- Current wording: Three short steps cover writing the account, choosing the response and deciding what is useful.
+- Purpose: Explains the future conversation model without repeating the privacy or moderation notices.
+- Product state: Future service behavior.
+
 ## Founder
 
-- Current wording: A first-person account of the experiences, unanswered questions and book that led to the project.
+- Current wording: The owner-approved first-person account of the experiences, unanswered questions and book that led to the project.
 - Purpose: Explains why the project exists without claiming professional, therapeutic or spiritual authority.
 - Owner review: Required before production.
 
