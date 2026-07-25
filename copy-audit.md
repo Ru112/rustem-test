@@ -1,74 +1,67 @@
 # Public copy audit
 
-This audit records the public wording used on the current redesign branch. “Current” means the browser-only prototype. “Future” means a feature that is described but is not available.
-
-## Header and navigation
-
-- Previous: Links suggested active exploration, sign-in and public sharing.
-- Replacement: Project, How it will work, Community principles, About, Support and Start a private draft.
-- Reason: Every navigation item now leads to content that exists. Accounts and public submissions are not presented as active.
-- Service state: Current prototype.
-- Owner approval: Accounts and public publishing require a separate launch review.
+This audit describes the current homepage direction on the redesign branch. “Current” means the browser-only prototype. “Future” means a feature described but not yet available.
 
 ## Hero
 
-- Previous: “Something happened. You still don’t know what to make of it.”
-- Replacement: “You don’t have to decide what it meant before you write it down.”
-- Reason: The sentence focuses on the immediate, available action without promising certainty or an active community.
-- Service state: Current draft tool and future editorial position.
-- Owner approval: None.
+- Previous: “You don’t have to decide what it meant before you write it down.”
+- Replacement: “Some experiences are hard to explain. They’re still worth putting into words.”
+- Reason: The new hero begins with the human experience, then gives the visitor an immediate private action.
+- State: The private draft works now. Community sharing is a future feature.
+- Owner approval: Public sharing must remain closed until the control system and launch plan are approved.
 
-## Response preferences
+## Response preference preview
 
-- Previous: A larger explanatory section with repeated policy language.
-- Replacement: Four brief modes: Just listen, Similar experiences, Different perspectives and Open discussion.
-- Reason: The preview explains the future choice without implying that comments or publishing are open.
-- Service state: Future discussion model, demonstrated by the current private form.
-- Owner approval: Final enforcement details before comments open.
+- Previous: The four response modes appeared as a separate explanatory section.
+- Replacement: A product-control preview beside the hero shows the future choice in context.
+- Reason: It demonstrates a distinctive part of the product without implying that real publishing is active.
+- State: The same preference is available in the current private draft. Display with published stories is future behavior.
+- Owner approval: Final response and moderation workflow.
 
-## Project explanation
+## How the community will work
 
-- Previous: Search, topics and fictional story listings occupied most of the homepage.
-- Replacement: A short distinction between experience and interpretation, followed by an honest description of a possible archive.
-- Reason: The shorter page avoids suggesting that real submissions or an active archive exist.
-- Service state: Future archive concept.
-- Owner approval: Archive taxonomy and publication workflow.
+- Previous: Several sections repeated the distinction between experience and interpretation.
+- Replacement: Three short steps cover nickname use, response choice and open conclusions.
+- Reason: The wording is shorter and clearly distinguishes current and future behavior.
+- State: Future service model.
+- Owner approval: Account privacy, publication and moderation procedures.
 
 ## Private draft
 
-- Previous: A large promotional writing block.
-- Replacement: “Write before deciding whether to share,” with a clear browser-only storage notice.
-- Reason: The section describes what the prototype actually does. It does not call local storage secure, anonymous or cloud-backed.
-- Service state: Current browser-only functionality.
-- Owner approval: Any future upload, synchronization or publishing flow.
+- Previous: The draft tool was functional but visually disconnected from the project story.
+- Replacement: The same browser-only tool follows the community explanation and uses the heading “Put it into words first.”
+- Reason: The draft is now the practical next step in the page’s narrative.
+- State: Current browser-only functionality.
+- Owner approval: Any future upload, synchronization or publication feature.
 
-## Community principles
+## Founder story
 
-- Previous: Longer institutional statements.
-- Replacement: Four concise boundaries covering response choice, differing explanations, idea-focused disagreement, privacy and conduct.
-- Reason: The wording allows belief, doubt and uncertainty without promising safety or deciding metaphysical truth.
-- Service state: Future moderation position.
-- Owner approval: Final rules and escalation procedures before launch.
+- Previous: A brief institutional project explanation.
+- Replacement: A first-person account of the experiences, unanswered questions and book that led to the project.
+- Reason: The founder’s motivation gives visitors a credible reason for the project without claiming professional or spiritual authority.
+- State: Current founder statement.
+- Owner approval: The owner should review the first-person text before production.
 
-## Support
+## Support and payment privacy
 
-- Previous: Support was visually mixed with footer information.
-- Replacement: A separate, restrained section titled “Help build Project Supernatural.”
-- Reason: The section explains the purpose of optional support and states that it never changes access, publication or moderation.
-- Service state: Current PayPal link.
-- Owner approval: Any change to the support purpose or payment provider.
+- Previous: A short support block described development and book publication.
+- Replacement: A support panel beside the founder story explains development costs, influence boundaries, charity status and the limited information PayPal may provide.
+- Reason: The fuller wording separates financial support from access and moderation while making the payment relationship clearer.
+- State: Current PayPal link and support policy.
+- Owner approval: Financial and legal wording should be reviewed before production.
 
-## Information pages
+## Community principles and information pages
 
-- Previous: Some footer destinations were incomplete or could be mistaken for final policy.
-- Replacement: Real About, Community principles, Privacy, Terms, Safety and privacy, Prototype status and Contact pages.
-- Reason: Every visible destination now opens relevant content. Unfinished policy pages say “Draft for review.”
-- Service state: Current prototype documentation.
-- Owner approval: Privacy, Terms, Safety and Community principles need owner and legal review before real users launch.
+- Previous: Principles appeared before the founder story and support.
+- Replacement: Principles close the main page after the project’s purpose and funding are explained.
+- Reason: The order now moves from human story to practical tool, founder context and community boundaries.
+- State: Future moderation position. All footer destinations open real prototype documents.
+- Owner approval: Final community rules, privacy, safety and terms documents.
 
 ## Claim review
 
-- No active-user, verified-story, anonymity, complete-safety or therapeutic claim is present.
-- Public submissions, accounts and comments are described as closed.
-- Moderation is described as a future privacy-and-conduct process, not fact verification.
-- Buttons use direct verbs and the page avoids testimonials, invented quotations and user counts.
+- The page does not claim active users, verified experiences, perfect anonymity or complete safety.
+- Accounts, public submissions and comments are not presented as open.
+- The response-control panel is visibly marked as a prototype preview.
+- Support is voluntary and is not connected to access, publication or moderation.
+- No testimonial, invented quotation, mystical imagery or popularity claim is present.
