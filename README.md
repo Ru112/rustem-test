@@ -18,7 +18,7 @@ No accounts, database, publishing, analytics, tracking, secrets, AI chat, or rea
 
 ## Run locally
 
-Open `index.html` directly, or serve the folder with any static file server. No build step or dependencies are required.
+Serve the folder through a local HTTP server. No build step or dependencies are required. Opening the HTML file directly is not a supported test path because it does not represent deployed asset loading.
 
 The draft is stored in browser `localStorage` on the current device. It is never uploaded by this prototype.
 

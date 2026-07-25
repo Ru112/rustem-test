@@ -30,7 +30,9 @@ jobs:
       - name: Prepare public-only artifact
         run: |
           mkdir _site
-          cp index.html styles.css script.js .nojekyll _site/
+          cp *.html styles.css script.js .nojekyll _site/
+          mkdir -p _site/assets
+          cp -R assets/fonts _site/assets/
       - name: Upload static site
         uses: actions/upload-pages-artifact@v3
         with:
