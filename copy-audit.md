@@ -1,101 +1,74 @@
 # Public copy audit
 
-This audit compares the v1 public prototype with the v2 wording. “Current” means the static prototype people can preview now. “Future” means behavior that is described but not yet available.
+This audit records the public wording used on the current redesign branch. “Current” means the browser-only prototype. “Future” means a feature that is described but is not available.
 
 ## Header and navigation
 
-- Previous wording: “Explore experiences”, “Write privately”, and a share action without nearby publication context.
-- Replacement wording: “Read experiences”, “Start a private draft”, and “Share an experience” linking directly to the browser-only draft area.
-- Why it changed: The actions now begin with plain verbs. The draft area immediately states that nothing is sent, published or uploaded.
+- Previous: Links suggested active exploration, sign-in and public sharing.
+- Replacement: Project, How it will work, Community principles, About, Support and Start a private draft.
+- Reason: Every navigation item now leads to content that exists. Accounts and public submissions are not presented as active.
 - Service state: Current prototype.
-- Claim needing owner approval: “Sign in” was removed because accounts do not exist. It should return only after the account flow is designed and approved.
+- Owner approval: Accounts and public publishing require a separate launch review.
 
 ## Hero
 
-- Previous wording: “A place to describe what happened — without being told what it must mean.”
-- Replacement wording: “Something happened. You still don’t know what to make of it.”
-- Why it changed: The new line sounds like ordinary speech and makes room for uncertainty. The supporting text rules out ridicule and pressure without promising complete safety.
-- Service state: Current prototype and future editorial position.
-- Claim needing owner approval: None.
-
-## Search
-
-- Previous wording: “Search experiences, themes or questions.”
-- Replacement wording: “Find an experience” with “Search by experience, question or theme.”
-- Why it changed: The label is shorter and clearer. Search results now state that only on-page prototype examples are checked.
-- Service state: Current prototype demonstration.
-- Claim needing owner approval: Server-side archive search will need review before launch.
-
-## Topics
-
-- Previous wording: “Topics people return to,” including “Presence and apparitions” and “Experiences without a clear category.”
-- Replacement wording: “Browse by experience,” including “A sensed presence” and “Something difficult to categorize.”
-- Why it changed: The labels describe what a person noticed without choosing an explanation.
-- Service state: Future archive structure shown in the current prototype.
-- Claim needing owner approval: Final taxonomy should be reviewed with real moderation and privacy workflows.
-
-## Experience examples
-
-- Previous wording: “Personal accounts, read on their own terms” and a shorter “Prototype example” marker.
-- Replacement wording: “Experiences people still think about” and the full marker “Prototype example — not a real submission.”
-- Why it changed: Every item now makes its fictional status unmistakable. Excerpts use shorter sentences and avoid claims about active users.
-- Service state: Current prototype examples only.
-- Claim needing owner approval: Every real submission and publication policy must be approved before public posting opens.
+- Previous: “Something happened. You still don’t know what to make of it.”
+- Replacement: “You don’t have to decide what it meant before you write it down.”
+- Reason: The sentence focuses on the immediate, available action without promising certainty or an active community.
+- Service state: Current draft tool and future editorial position.
+- Owner approval: None.
 
 ## Response preferences
 
-- Previous wording: “The storyteller chooses the kind of conversation,” followed by brief summaries.
-- Replacement wording: “Choose how you want people to respond,” followed by the four approved modes and descriptions.
-- Why it changed: The new wording speaks directly to the writer and explains what each choice permits.
-- Service state: Future service behavior demonstrated in the current draft form.
-- Claim needing owner approval: Enforcement details need owner review before comments open.
+- Previous: A larger explanatory section with repeated policy language.
+- Replacement: Four brief modes: Just listen, Similar experiences, Different perspectives and Open discussion.
+- Reason: The preview explains the future choice without implying that comments or publishing are open.
+- Service state: Future discussion model, demonstrated by the current private form.
+- Owner approval: Final enforcement details before comments open.
 
-## Community principle
+## Project explanation
 
-- Previous wording: “Clear boundaries leave room for uncertainty.”
-- Replacement wording: “What happened comes first. What it might mean stays open.”
-- Why it changed: The principle distinguishes experience from interpretation. It also states that moderation handles privacy and conduct, not metaphysical truth.
-- Service state: Future moderation policy presented in the current prototype.
-- Claim needing owner approval: Final community rules and escalation procedures require pre-launch approval.
+- Previous: Search, topics and fictional story listings occupied most of the homepage.
+- Replacement: A short distinction between experience and interpretation, followed by an honest description of a possible archive.
+- Reason: The shorter page avoids suggesting that real submissions or an active archive exist.
+- Service state: Future archive concept.
+- Owner approval: Archive taxonomy and publication workflow.
 
 ## Private draft
 
-- Previous wording: “Start with your own words,” with title, story and response fields.
-- Replacement wording: “Write it down before deciding what to do with it,” with two additional optional reflection fields.
-- Why it changed: The area supports writing without implying publication. It keeps the exact browser-only storage notice and uses natural status messages.
+- Previous: A large promotional writing block.
+- Replacement: “Write before deciding whether to share,” with a clear browser-only storage notice.
+- Reason: The section describes what the prototype actually does. It does not call local storage secure, anonymous or cloud-backed.
 - Service state: Current browser-only functionality.
-- Claim needing owner approval: Any future upload, encryption, synchronization or publishing flow.
+- Owner approval: Any future upload, synchronization or publishing flow.
 
-## Founder
+## Community principles
 
-- Previous wording: Third-person copy describing the founder and the project’s intended community.
-- Replacement wording: First-person copy beginning “I started Project Supernatural because…”
-- Why it changed: The approved wording is direct and does not present the founder as a therapist, researcher or spiritual authority.
-- Service state: Current founder position and future project purpose.
-- Claim needing owner approval: Owner should confirm the first-person statement before production deployment.
+- Previous: Longer institutional statements.
+- Replacement: Four concise boundaries covering response choice, differing explanations, idea-focused disagreement, privacy and conduct.
+- Reason: The wording allows belief, doubt and uncertainty without promising safety or deciding metaphysical truth.
+- Service state: Future moderation position.
+- Owner approval: Final rules and escalation procedures before launch.
 
-## Community rules
+## Support
 
-- Previous wording: “Protect people. Leave conclusions open,” followed by four formal rules.
-- Replacement wording: Four short rules covering personal attacks, ridicule, diagnosis, spiritual commands, privacy and response preferences.
-- Why it changed: The rules use ordinary words and separate disagreement from harmful conduct.
-- Service state: Future moderation rules shown in the current prototype.
-- Claim needing owner approval: Legal review may be needed before real users or public comments.
+- Previous: Support was visually mixed with footer information.
+- Replacement: A separate, restrained section titled “Help build Project Supernatural.”
+- Reason: The section explains the purpose of optional support and states that it never changes access, publication or moderation.
+- Service state: Current PayPal link.
+- Owner approval: Any change to the support purpose or payment provider.
 
-## Prototype, privacy and support
+## Information pages
 
-- Previous wording: A static-prototype notice plus “Support is voluntary and never influences access or moderation.”
-- Replacement wording: A shorter product-status notice and the approved sentence: “Support is optional. It never affects access, publication, moderation or how anyone is treated.”
-- Why it changed: The notice accurately says accounts, submissions and comments are closed. It also states that analytics and tracking are absent.
-- Service state: Current prototype.
-- Claim needing owner approval: Privacy, Terms and Safety & Privacy now open real prototype documents. Their text still needs owner and legal review before real users launch.
+- Previous: Some footer destinations were incomplete or could be mistaken for final policy.
+- Replacement: Real About, Community principles, Privacy, Terms, Safety and privacy, Prototype status and Contact pages.
+- Reason: Every visible destination now opens relevant content. Unfinished policy pages say “Draft for review.”
+- Service state: Current prototype documentation.
+- Owner approval: Privacy, Terms, Safety and Community principles need owner and legal review before real users launch.
 
-## Human-tone and claim review
+## Claim review
 
-- Headings and paragraphs were read aloud and simplified where the approved text allowed it.
-- Most non-approved sentences are under approximately 18 words.
-- Buttons begin with clear actions.
-- No testimonial, user count, active-community claim, verification claim or anonymity promise is present.
-- “Under a nickname” describes public presentation only. It does not promise perfect anonymity.
-- The approved founder paragraph uses “final answers”; this was retained because the owner supplied it as approved copy.
-- The wording is plain enough to translate without relying on idioms or wordplay.
+- No active-user, verified-story, anonymity, complete-safety or therapeutic claim is present.
+- Public submissions, accounts and comments are described as closed.
+- Moderation is described as a future privacy-and-conduct process, not fact verification.
+- Buttons use direct verbs and the page avoids testimonials, invented quotations and user counts.

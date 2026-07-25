@@ -28,7 +28,7 @@ document.addEventListener("click", event => {
   if (!event.target.closest(".site-header")) setMenu(false);
 });
 window.addEventListener("resize", () => {
-  if (window.innerWidth > 760) setMenu(false);
+  if (window.innerWidth > 860) setMenu(false);
 });
 
 function draftData() {
@@ -73,10 +73,12 @@ draftForm.addEventListener("input", () => {
   clearTimeout(autosaveTimer);
   autosaveTimer = setTimeout(() => saveDraft(false), 800);
 });
+
 document.querySelector("#save").addEventListener("click", () => {
   clearTimeout(autosaveTimer);
   saveDraft(true);
 });
+
 document.querySelector("#clear").addEventListener("click", () => {
   const hasContent = draftFields.some(id => document.getElementById(id).value.trim());
   if (hasContent && !window.confirm("Delete this private draft from this browser? This cannot be undone.")) return;
@@ -86,42 +88,6 @@ document.querySelector("#clear").addEventListener("click", () => {
   saveState.textContent = "Nothing saved yet";
   status.textContent = "This draft was removed from this browser.";
   document.querySelector("#title").focus();
-});
-
-const searchForm = document.querySelector("#search-form");
-const searchInput = document.querySelector("#experience-search");
-const searchStatus = document.querySelector("#search-status");
-const storyItems = [...document.querySelectorAll(".story-item")];
-const noResults = document.querySelector("#no-results");
-
-function filterStories(query) {
-  const normalized = query.trim().toLowerCase();
-  let matches = 0;
-  storyItems.forEach(item => {
-    const match = !normalized || item.dataset.search.includes(normalized) || item.dataset.topic.includes(normalized);
-    item.hidden = !match;
-    if (match) matches += 1;
-  });
-  noResults.hidden = matches !== 0;
-  searchStatus.textContent = normalized
-    ? `${matches} prototype ${matches === 1 ? "example" : "examples"} found for “${query.trim()}”. This search checks only the examples on this page.`
-    : "This search checks only the prototype examples on this page.";
-}
-
-searchForm.addEventListener("submit", event => {
-  event.preventDefault();
-  filterStories(searchInput.value);
-  document.querySelector("#experiences-title").focus({preventScroll:true});
-  document.querySelector("#experiences").scrollIntoView();
-});
-searchInput.addEventListener("input", () => {
-  if (!searchInput.value) filterStories("");
-});
-document.querySelectorAll("[data-topic]").forEach(link => {
-  link.addEventListener("click", () => {
-    searchInput.value = link.dataset.topic;
-    filterStories(link.dataset.topic);
-  });
 });
 
 restoreDraft();
